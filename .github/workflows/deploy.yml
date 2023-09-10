@@ -2,13 +2,17 @@ name: Deploy Worker
 
 on:
   push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - LICENSE
   repository_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 60
-    needs: test
     steps:
       - uses: actions/checkout@v2
       - name: Build & Deploy Worker
