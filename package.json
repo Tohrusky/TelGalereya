@@ -31,6 +31,7 @@
     "wrangler": "^3.7.0"
   },
   "dependencies": {
-    "itty-router": "^4.0.22"
+    "itty-router": "^4.0.22",
+    "js-base64": "^3.7.5"
   }
 }

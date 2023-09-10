@@ -1,16 +1,16 @@
-import { error, json, Router, withParams } from 'itty-router'
+import { error, json, Router } from 'itty-router'
+import { handleImage } from './services/image.ts'
+import { handleUpload } from './services/upload.ts'
 
 // create a new Router
 const router = Router()
 
-const a: string = 'Hello SB'
-
 router
-  // add some middleware upstream on all routes
-  .all('*', withParams)
+  .get('/', () => new Response('A Cloudflare Worker for Telegraph image hosting.', { status: 200 }))
 
-  // GET list of todos
-  .get('/', () => new Response(a))
+  .get('/image/:id', handleImage)
+
+  .post('/api/v1/upload', handleUpload)
 
   // 404 for everything else
   .all('*', () => error(404))
