@@ -1,0 +1,3 @@
+main = "./src/index.ts"
+name = "tgimg-worker"
+compatibility_date = "2023-09-10"

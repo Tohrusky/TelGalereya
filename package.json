@@ -1,0 +1,36 @@
+{
+  "name": "tgimg-worker",
+  "version": "0.0.1",
+  "description": "A Cloudflare Worker for Telegraph image hosting",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Tohrusky",
+  "license": "BSD-3-Clause license",
+  "repository": "https://github.com/Tohrusky/tgimg-worker",
+  "homepage": "https://github.com/Tohrusky/tgimg-worker",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "pnpm typecheck && wrangler deploy",
+    "format": "prettier --write .",
+    "lint": "pnpm format && eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+    "typecheck": "pnpm lint && tsc --noEmit"
+  },
+  "devDependencies": {
+    "@babel/types": "^7.22.17",
+    "@cloudflare/workers-types": "^4.20230904.0",
+    "@rushstack/eslint-patch": "^1.3.3",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
+    "eslint": "^8.49.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-typescript": "^3.0.0",
+    "miniflare": "^3.20230904.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2",
+    "wrangler": "^3.7.0"
+  },
+  "dependencies": {
+    "itty-router": "^4.0.22"
+  }
+}
