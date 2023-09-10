@@ -1,6 +1,7 @@
 import { error, json, Router } from 'itty-router'
 import { handleImage } from './services/image.ts'
 import { handleUpload } from './services/upload.ts'
+import { handleNSFWCheck } from './services/nsfw.ts'
 
 // create a new Router
 const router = Router()
@@ -11,6 +12,8 @@ router
   .get('/image/:id', handleImage)
 
   .post('/api/v1/upload', handleUpload)
+
+  .get('/api/v1/nsfw-check', handleNSFWCheck)
 
   // 404 for everything else
   .all('*', () => error(404))

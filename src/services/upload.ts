@@ -1,5 +1,5 @@
 import { IRequest } from 'itty-router/Router'
-import { extractBaseUrl } from '../utils.ts'
+import { extractBaseUrl } from '../utils/url.ts'
 import { Base64 } from 'js-base64'
 import type { ImageRespenseType } from '../types.ts'
 import { GetErrorResponse, GetUploadResponse } from './response.ts'
