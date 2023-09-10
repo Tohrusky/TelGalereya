@@ -5,7 +5,7 @@ import type { ImageRespenseType } from '../types.ts'
 import { GetErrorResponse, GetUploadResponse } from './response.ts'
 
 export async function handleUpload(request: IRequest): Promise<Response> {
-  const tgUrl = 'https://telegra.ph/'
+  const tgUrl = 'https://telegra.ph'
   const proxyUrl = await extractBaseUrl(request)
 
   try {
@@ -21,7 +21,7 @@ export async function handleUpload(request: IRequest): Promise<Response> {
       const res: Array<ImageRespenseType> = await response.json()
       const img: string = res[0].src.replace('/file/', '')
 
-      const orignImgUrl: string = tgUrl + 'file/' + img
+      const orignImgUrl: string = tgUrl + '/file/' + img
       const proxyImgUrl: string = proxyUrl + '/image/' + Base64.encode(img)
 
       // 返回 JSON 响应
