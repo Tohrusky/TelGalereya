@@ -8,6 +8,7 @@ on:
       - '**.md'
       - LICENSE
   repository_dispatch:
+  workflow_dispatch:
 
 jobs:
   deploy:
