@@ -1,5 +1,6 @@
 export type ImageRespenseType = {
-  src: string
+  src?: string
+  error?: string
 }
 
 interface ApiResponseType<T> {

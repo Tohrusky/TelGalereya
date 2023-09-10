@@ -18,7 +18,18 @@ export async function handleUpload(request: IRequest): Promise<Response> {
 
     // 检查响应是否成功，通常是状态码为 200
     if (response.status === 200) {
-      const res: Array<ImageRespenseType> = await response.json()
+      const res: Array<ImageRespenseType> | ImageRespenseType = await response.json()
+
+      if (!Array.isArray(res)) {
+        return new Response(JSON.stringify(GetErrorResponse('Error: ' + res.error)), {
+          status: 500,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+      }
+
+      // @ts-ignore
       const img: string = res[0].src.replace('/file/', '')
 
       const orignImgUrl: string = tgUrl + '/file/' + img
