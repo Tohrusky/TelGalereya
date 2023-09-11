@@ -21,9 +21,6 @@
     "wrangler": "^3.7.0"
   },
   "dependencies": {
-    "@tensorflow/tfjs": "^4.10.0",
-    "canvas": "^2.11.2",
-    "image-data-uri": "^2.0.1",
     "itty-router": "^4.0.22",
     "js-base64": "^3.7.5"
   }

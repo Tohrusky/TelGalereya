@@ -1,10 +1,28 @@
 import Koa from 'koa'
-const app = new Koa()
+import Router from 'koa-router'
+import bodyParser from 'koa-bodyparser'
+import { detectImage } from './src/nsfw'
 
-app.use(async (ctx) => {
-  ctx.body = 'Hello Vercel, Hi Koa2'
+const app = new Koa()
+const router = new Router()
+
+//路由
+router.get('/', async (ctx) => {
+  ctx.body = 'A Node.js server for NSFW image classification using TensorFlow.js'
 })
 
+router.get('/api/v1/nsfw-check', async (ctx) => {
+  const { url } = ctx.query
+  ctx.type = 'application/json'
+
+  const res = await detectImage(url as string)
+
+  ctx.body = JSON.stringify(res)
+})
+
+app.use(bodyParser())
+app.use(router.routes())
+app.use(router.allowedMethods())
 app.listen(3008, () => {
   console.log('3008 is listening')
 })
