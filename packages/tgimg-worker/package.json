@@ -11,7 +11,7 @@
   "homepage": "https://github.com/Tohrusky/tgimg-worker",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "pnpm typecheck && wrangler deploy"
+    "deploy": "wrangler deploy"
   },
   "devDependencies": {
     "miniflare": "^3.20230904.0",
