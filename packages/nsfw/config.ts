@@ -1,1 +1,1 @@
-export const IMAGE_RESIZE = 40
+export const IMAGE_RESIZE_WIDTH = 40

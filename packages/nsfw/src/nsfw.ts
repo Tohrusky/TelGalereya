@@ -1,8 +1,5 @@
 import { load, NSFWJS } from './lib/nsfwjs'
-import * as tf from '@tensorflow/tfjs'
-import sharp from 'sharp'
-import crypto from 'crypto'
-import { IMAGE_RESIZE } from '../config'
+import { tensorToHash, loadImageAndConvert } from './utils'
 
 let model: NSFWJS
 export async function loadModel() {
@@ -12,47 +9,13 @@ export async function loadModel() {
   }
 }
 
-// 图片哈希字典
+// 缓存的图片哈希字典
 const imageHashDict: Record<string, Record<string, number>> = {}
-
-// 将 tf.Tensor3D 转换为普通的 JavaScript 数组，并计算哈希值
-function tensorToHash(tensor: tf.Tensor3D): string {
-  const data = tensor.dataSync()
-  const shape = tensor.shape
-  const flatArray = Array.from(
-    { length: shape[0] * shape[1] * shape[2] },
-    (_, index) => data[index]
-  )
-  const hash = crypto.createHash('sha256')
-  hash.update(flatArray.join('')) // 将数组拼接成一个字符串并计算哈希值
-  return hash.digest('hex')
-}
-
-async function loadImageAndConvert(imageUrl: string) {
-  const response = await fetch(imageUrl)
-  if (!response.ok) {
-    throw new Error(`Failed to fetch image: ${response.status}`)
-  }
-
-  const imageBuffer = await response.arrayBuffer()
-
-  const meta = await sharp(imageBuffer).metadata()
-
-  const reWidth = IMAGE_RESIZE
-  // 计算高度，以保持原始宽高比
-  const reHeight = Math.round((IMAGE_RESIZE * Number(meta.height)) / Number(meta.width))
-
-  // 创建一个 Uint8Array 来存储图像的像素数据
-  const pixelData = new Uint8Array(await sharp(imageBuffer).resize(reWidth, reHeight).toBuffer())
-  // console.log('pixelData', pixelData)
-  // 将图像转换为 Tensor3D
-  return tf.browser.fromPixels({ width: reWidth, height: reHeight, data: pixelData })
-}
 
 export async function detectImage(imageUrl: string) {
   console.log('detectImage', imageUrl)
   const imageData = await loadImageAndConvert(imageUrl)
-  // console.log('imageData', imageData)
+  console.log('imageData', imageData)
   // 计算图像的哈希值
   const imageHash = tensorToHash(imageData)
   console.log('imageHash', imageHash)
