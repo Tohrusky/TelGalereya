@@ -50,6 +50,9 @@ importers:
       '@tensorflow/tfjs':
         specifier: ^4.10.0
         version: 4.10.0(seedrandom@3.0.5)
+      '@vercel/analytics':
+        specifier: ^1.0.2
+        version: 1.0.2
       koa:
         specifier: ^2.14.2
         version: 2.14.2
@@ -1036,6 +1039,10 @@ packages:
       '@typescript-eslint/types': 6.6.0
       eslint-visitor-keys: 3.4.3
     dev: true
+
+  /@vercel/analytics@1.0.2:
+    resolution: {integrity: sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==}
+    dev: false
 
   /@vercel/build-utils@7.1.1:
     resolution: {integrity: sha512-JThOdCyvlgH8tLQYvm/yjwPnOrld26MqVObQ75Cm3PjdDpagwNq42Vb7vgqdpOJje7IZCQ2i1vFQIQiTFVIvtw==}
