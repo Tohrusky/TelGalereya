@@ -23,7 +23,6 @@ export async function loadImageAndConvert(imageUrl: string) {
   let loaded = false
 
   img.onload = () => {
-    console.log('image loaded.')
     // 使用 Canvas 库加载图像并创建画布
     canvas = createCanvas(img.width, img.height)
     const ctx = canvas.getContext('2d')
@@ -36,12 +35,12 @@ export async function loadImageAndConvert(imageUrl: string) {
 
   // 等待图片绘制
   while (!loaded) {
-    await new Promise((resolve) => setTimeout(resolve, 100))
+    await new Promise((resolve) => setTimeout(resolve, 10))
   }
 
   // 将画布中的图像转换为 TensorFlow 张量
   const tensorFromCanvas = tf.browser.fromPixels(canvas)
-  console.log('tensorFromCanvas', tensorFromCanvas)
+  console.log('OriginImageTensor: ', tensorFromCanvas)
   // 进行图像缩放
   const newWidth = IMAGE_RESIZE_WIDTH
   if (Number(newWidth) === -1) {
