@@ -13,7 +13,7 @@
   "scripts": {
     "dev": "nodemon index.ts",
     "generate": "prisma generate && prisma migrate dev --name init && prisma migrate deploy",
-    "postinstall": "npm install prisma -g && pnpm run generate"
+    "syncdb": "npm install prisma -g && pnpm run generate"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.44",
