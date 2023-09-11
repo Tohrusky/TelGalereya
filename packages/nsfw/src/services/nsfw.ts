@@ -19,7 +19,7 @@ export async function handleNSFW(ctx: Koa.Context) {
 
   let nsfw = false
   let resMsg = 'Safe content'
-  if (Score.porn > NSFW_VALUE || Score.hentai > NSFW_VALUE || Score.sexy > NSFW_VALUE) {
+  if (Score.porn + Score.hentai + Score.sexy > NSFW_VALUE) {
     nsfw = true
     if (Score.porn > Score.hentai && Score.hentai > Score.sexy) {
       resMsg = 'NSFW content: Porn'
