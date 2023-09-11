@@ -1,5 +1,5 @@
 import { load, NSFWJS } from './lib/nsfwjs'
-import * as tf from '@tensorflow/tfjs-node'
+import * as tf from '@tensorflow/tfjs'
 
 let model: NSFWJS
 async function loadModel() {

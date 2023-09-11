@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-node'
+import * as tf from '@tensorflow/tfjs'
 import { NSFW_CLASSES } from './nsfw_classes'
 
 tf.setBackend('cpu').then((r: any) => console.log(r))
