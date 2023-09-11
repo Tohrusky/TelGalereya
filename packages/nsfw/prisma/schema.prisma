@@ -9,7 +9,7 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
  
-model User {
+model Rating {
   id         Int      @id @default(autoincrement())
   hash       String   @unique
   rating     String

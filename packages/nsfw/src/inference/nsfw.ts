@@ -1,5 +1,6 @@
 import { load, NSFWJS } from '../lib/nsfwjs'
 import { tensorToHash, loadImageAndConvert } from './tensor'
+import { addRating, getRating } from '../dao/rating'
 
 let model: NSFWJS
 export async function loadModel() {
@@ -9,9 +10,6 @@ export async function loadModel() {
   }
 }
 
-// 缓存的图片哈希字典
-const imageHashDict: Record<string, Record<string, number>> = {}
-
 export async function detectImage(imageUrl: string) {
   console.log('detectImage', imageUrl)
   const imageData = await loadImageAndConvert(imageUrl)
@@ -19,10 +17,12 @@ export async function detectImage(imageUrl: string) {
   // 计算图像的哈希值
   const imageHash = tensorToHash(imageData)
   console.log('imageHash', imageHash)
-  if (imageHashDict[imageHash]) {
+
+  const historyRating = await getRating(imageHash)
+  if (historyRating !== null) {
     // 如果图像已经被分类过，就直接返回之前的分类结果
     console.log('Image already classified')
-    return imageHashDict[imageHash]
+    return JSON.parse(historyRating.rating)
   }
 
   // 使用 nsfwjs 进行分类并计算推理时间
@@ -37,8 +37,8 @@ export async function detectImage(imageUrl: string) {
   })
   console.log('rating', rating)
 
-  // 将分类结果存储到哈希字典中
-  imageHashDict[imageHash] = rating
+  // 将分类结果存储数据库
+  await addRating(imageHash, JSON.stringify(rating))
 
   return rating
 }
