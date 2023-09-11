@@ -1,5 +1,5 @@
 import Koa from 'koa'
-import { detectImage } from '../utils/nsfw'
+import { detectImage } from '../inference/nsfw'
 import { NSFWResponseType, NSFWScoreType } from '../types'
 import { NSFW_VALUE } from '../../config'
 

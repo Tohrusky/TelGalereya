@@ -11,7 +11,7 @@
   "repository": "https://github.com/Tohrusky/tgimg-worker",
   "homepage": "https://github.com/Tohrusky/tgimg-worker",
   "scripts": {
-    "dev": "nodemon index.ts"
+    "dev": "prisma generate && nodemon index.ts"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.44",
@@ -20,7 +20,8 @@
     "koa-body": "^6.0.1",
     "koa-router": "^12.0.0",
     "koa-bodyparser": "^4.4.1",
-    "@vercel/analytics": "^1.0.2"
+    "@vercel/analytics": "^1.0.2",
+    "@prisma/client": "^5.2.0"
   },
   "devDependencies": {
     "@types/koa": "^2.13.8",

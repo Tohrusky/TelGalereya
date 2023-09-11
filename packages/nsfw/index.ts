@@ -1,7 +1,7 @@
 import Koa from 'koa'
 import Router from 'koa-router'
 import bodyParser from 'koa-bodyparser'
-import { loadModel } from './src/utils/nsfw'
+import { loadModel } from './src/inference/nsfw'
 import { handleNSFW } from './src/services/nsfw'
 import { inject } from '@vercel/analytics'
 
