@@ -1,7 +1,7 @@
 import * as tf from '@tensorflow/tfjs'
 import crypto from 'crypto'
 import { createCanvas, Image } from '@napi-rs/canvas'
-import { IMAGE_RESIZE_WIDTH } from '../config'
+import { IMAGE_RESIZE_WIDTH } from '../../config'
 
 // 将 tf.Tensor3D 张量 转换为普通的 JavaScript 数组，并计算哈希值
 export function tensorToHash(tensor: tf.Tensor3D): string {

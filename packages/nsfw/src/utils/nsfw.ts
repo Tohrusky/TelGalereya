@@ -1,5 +1,5 @@
-import { load, NSFWJS } from './lib/nsfwjs'
-import { tensorToHash, loadImageAndConvert } from './utils'
+import { load, NSFWJS } from '../lib/nsfwjs'
+import { tensorToHash, loadImageAndConvert } from './tensor'
 
 let model: NSFWJS
 export async function loadModel() {

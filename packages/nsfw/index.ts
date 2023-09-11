@@ -1,7 +1,8 @@
 import Koa from 'koa'
 import Router from 'koa-router'
 import bodyParser from 'koa-bodyparser'
-import { detectImage, loadModel } from './src/nsfw'
+import { loadModel } from './src/utils/nsfw'
+import { handleNSFW } from './src/services/nsfw'
 
 const app = new Koa()
 const router = new Router()
@@ -11,14 +12,7 @@ router.get('/', async (ctx) => {
   ctx.body = 'A Node.js server for NSFW image classification using TensorFlow.js'
 })
 
-router.get('/api/v1/nsfw-check', async (ctx) => {
-  const { url } = ctx.query
-  ctx.type = 'application/json'
-
-  const res = await detectImage(url as string)
-
-  ctx.body = JSON.stringify(res)
-})
+router.get('/api/v1/nsfw-check', handleNSFW)
 
 app.use(bodyParser())
 app.use(router.routes())
