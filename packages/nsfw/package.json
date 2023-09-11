@@ -12,7 +12,8 @@
   "homepage": "https://github.com/Tohrusky/tgimg-worker",
   "scripts": {
     "dev": "nodemon index.ts",
-    "postinstall": "pnpm prisma generate && pnpm prisma migrate dev --name init && pnpm prisma migrate deploy"
+    "generate": "prisma generate && prisma migrate dev --name init && prisma migrate deploy",
+    "postinstall": "npm install prisma -g && pnpm run generate"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.44",
