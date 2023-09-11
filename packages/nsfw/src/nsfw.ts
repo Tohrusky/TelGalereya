@@ -1,5 +1,7 @@
 import { load, NSFWJS } from './lib/nsfwjs'
 import * as tf from '@tensorflow/tfjs'
+import sharp from 'sharp'
+import { IMAGE_RESIZE } from '../config'
 
 let model: NSFWJS
 async function loadModel() {
@@ -7,8 +9,8 @@ async function loadModel() {
   if (!model) {
     model = await load()
   }
-  console.log('model loaded successfully')
 }
+loadModel().then(() => console.log('model loaded successfully'))
 
 async function loadImageAndConvert(imageUrl: string) {
   const response = await fetch(imageUrl)
@@ -18,11 +20,17 @@ async function loadImageAndConvert(imageUrl: string) {
 
   const imageBuffer = await response.arrayBuffer()
 
+  const meta = await sharp(imageBuffer).metadata()
+
+  const reWidth = IMAGE_RESIZE
+  // 计算高度，以保持原始宽高比
+  const reHeight = Math.round((IMAGE_RESIZE * Number(meta.height)) / Number(meta.width))
+
   // 创建一个 Uint8Array 来存储图像的像素数据
-  const pixelData = new Uint8Array(imageBuffer)
+  const pixelData = new Uint8Array(await sharp(imageBuffer).resize(reWidth, reHeight).toBuffer())
   console.log('pixelData', pixelData)
   // 将图像转换为 Tensor3D
-  return tf.browser.fromPixels({ width: 700, height: 700, data: pixelData })
+  return tf.browser.fromPixels({ width: reWidth, height: reHeight, data: pixelData })
 }
 
 export async function detectImage(imageUrl: string) {
