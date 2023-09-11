@@ -1,2 +1,3 @@
 # NSFW
-Node.js server for image classification using TensorFlow.js and NSFWJS.
+
+A Node.js server for NSFW image classification using TensorFlow.js.

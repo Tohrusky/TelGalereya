@@ -1,0 +1,28 @@
+{
+  "name": "@tgimg-worker/nsfw",
+  "version": "0.0.1",
+  "description": "A Node.js server for image classification using TensorFlow.js and NSFW.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Tohrusky",
+  "license": "BSD-3-Clause license",
+  "repository": "https://github.com/Tohrusky/tgimg-worker",
+  "homepage": "https://github.com/Tohrusky/tgimg-worker",
+  "scripts": {
+    "dev": "nodemon ./src/index.ts"
+  },
+  "dependencies": {
+    "koa": "^2.14.2",
+    "koa-body": "^6.0.1",
+    "koa-bodyparser": "^4.4.1"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.13.8",
+    "nodemon": "^3.0.1",
+    "@vercel/node": "^3.0.4",
+    "@types/koa-router": "^7.4.4",
+    "@types/koa2-cors": "^2.0.2",
+    "@types/koa-bodyparser": "^4.3.10"
+  }
+}
