@@ -83,6 +83,9 @@ importers:
 
   packages/tgimg-worker:
     dependencies:
+      '@tgimg-worker/nsfw':
+        specifier: workspace:*
+        version: link:../nsfw
       itty-router:
         specifier: ^4.0.22
         version: 4.0.22

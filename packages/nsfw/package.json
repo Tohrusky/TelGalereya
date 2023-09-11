@@ -5,6 +5,7 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "main": "index.ts",
   "author": "Tohrusky",
   "license": "BSD-3-Clause license",
   "repository": "https://github.com/Tohrusky/tgimg-worker",

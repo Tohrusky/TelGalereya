@@ -21,6 +21,7 @@
     "wrangler": "^3.7.0"
   },
   "dependencies": {
+    "@tgimg-worker/nsfw": "workspace:^",
     "itty-router": "^4.0.22",
     "js-base64": "^3.7.5"
   }
