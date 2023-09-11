@@ -36,8 +36,11 @@ export async function detectImage(imageUrl: string) {
   console.log('detectImage', imageUrl)
   const imageData = await loadImageAndConvert(imageUrl)
   console.log('imageData', imageData)
-  // 使用 nsfwjs 进行分类
+  // 使用 nsfwjs 进行分类并计算推理时间
+  const startTime = Date.now()
   const predictions = await model.classify(imageData)
+  const endTime = Date.now()
+  console.log(`Inference took ${endTime - startTime} ms`)
   // 将预测结果转换为一个对象
   const rating: Record<string, number> = {}
   predictions.forEach((predictions) => {
