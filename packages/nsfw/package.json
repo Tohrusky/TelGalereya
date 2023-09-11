@@ -16,7 +16,8 @@
     "vercel-build": "prisma generate",
     "serve": "pnpm build && node dist/index.js",
     "generate": "prisma generate && prisma migrate dev --name init && prisma migrate deploy",
-    "syncdb": "pnpm run generate"
+    "syncdb": "pnpm run generate",
+    "postinstall": "npm install -g prisma"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.44",
