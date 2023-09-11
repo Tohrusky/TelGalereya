@@ -1,5 +1,5 @@
 {
-  "name": "tgimg-worker",
+  "name": "img-worker",
   "version": "0.0.1",
   "description": "A Cloudflare Worker for Telegraph image hosting",
   "engines": {
@@ -7,8 +7,8 @@
   },
   "author": "Tohrusky",
   "license": "BSD-3-Clause license",
-  "repository": "https://github.com/Tohrusky/tgimg-worker",
-  "homepage": "https://github.com/Tohrusky/tgimg-worker",
+  "repository": "https://github.com/Tohrusky/img-worker",
+  "homepage": "https://github.com/Tohrusky/img-worker",
   "scripts": {
     "format": "prettier --write .",
     "lint": "pnpm format && eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",

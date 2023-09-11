@@ -1,5 +1,5 @@
 {
-  "name": "@tgimg-worker/tgimg-worker",
+  "name": "@img-worker/img-worker",
   "version": "0.0.1",
   "description": "A Cloudflare Worker for Telegraph image hosting",
   "engines": {
@@ -7,8 +7,8 @@
   },
   "author": "Tohrusky",
   "license": "BSD-3-Clause license",
-  "repository": "https://github.com/Tohrusky/tgimg-worker",
-  "homepage": "https://github.com/Tohrusky/tgimg-worker",
+  "repository": "https://github.com/Tohrusky/img-worker",
+  "homepage": "https://github.com/Tohrusky/img-worker",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy"
@@ -18,7 +18,7 @@
     "wrangler": "^3.7.0"
   },
   "dependencies": {
-    "@tgimg-worker/nsfw": "workspace:^",
+    "@img-worker/nsfw": "workspace:^",
     "itty-router": "^4.0.22",
     "js-base64": "^3.7.5"
   }

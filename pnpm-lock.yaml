@@ -90,7 +90,7 @@ importers:
 
   packages/tgimg-worker:
     dependencies:
-      '@tgimg-worker/nsfw':
+      '@img-worker/nsfw':
         specifier: workspace:^
         version: link:../nsfw
       itty-router:

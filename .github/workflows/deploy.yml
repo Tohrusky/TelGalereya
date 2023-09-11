@@ -34,7 +34,7 @@ jobs:
 
       - name: Deploy
         run: |
-          cd packages/tgimg-worker
+          cd packages/img-worker
           pnpm run deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}

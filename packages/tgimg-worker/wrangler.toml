@@ -1,4 +1,4 @@
 main = "./src/index.ts"
-name = "tgimg-worker"
+name = "img-worker"
 node_compat = true
 compatibility_date = "2023-09-04"

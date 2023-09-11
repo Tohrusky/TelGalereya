@@ -1,7 +1,7 @@
 import { IRequest } from 'itty-router/Router'
 import { Base64 } from 'js-base64'
 import { NSFW_API_URL, NSFW_DEFAULT_IMAGE, NSFW_DETECTOR } from '../../config.ts'
-import { NSFWResponseType } from '@tgimg-worker/nsfw/src/types.ts'
+import { NSFWResponseType } from '@img-worker/nsfw/src/types.ts'
 
 export async function handleImage(request: IRequest) {
   const { params } = request

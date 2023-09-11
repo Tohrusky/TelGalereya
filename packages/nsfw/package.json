@@ -1,5 +1,5 @@
 {
-  "name": "@tgimg-worker/nsfw",
+  "name": "@img-worker/nsfw",
   "version": "0.0.1",
   "description": "A Node.js server for image classification using TensorFlow.js and NSFW.js",
   "engines": {
@@ -8,8 +8,8 @@
   "main": "index.ts",
   "author": "Tohrusky",
   "license": "BSD-3-Clause license",
-  "repository": "https://github.com/Tohrusky/tgimg-worker",
-  "homepage": "https://github.com/Tohrusky/tgimg-worker",
+  "repository": "https://github.com/Tohrusky/img-worker",
+  "homepage": "https://github.com/Tohrusky/img-worker",
   "scripts": {
     "dev": "nodemon index.ts",
     "build": "prisma generate && tsc",
