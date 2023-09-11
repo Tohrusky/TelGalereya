@@ -12,8 +12,10 @@ export async function handleImage(request: IRequest) {
     return await fetch(url)
   }
 
+  await fetch(NSFW_API_URL) // 预热 API 服务
+
   try {
-    const response = await fetch(NSFW_API_URL + '?url=' + url)
+    const response = await fetch(NSFW_API_URL + '/api/v1/nsfw-check/?url=' + url)
 
     const res: NSFWResponseType = await response.json()
     console.log(res)
