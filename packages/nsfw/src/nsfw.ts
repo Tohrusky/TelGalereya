@@ -4,13 +4,12 @@ import sharp from 'sharp'
 import { IMAGE_RESIZE } from '../config'
 
 let model: NSFWJS
-async function loadModel() {
+export async function loadModel() {
   // 加载模型
   if (!model) {
     model = await load()
   }
 }
-loadModel().then(() => console.log('model loaded successfully'))
 
 async function loadImageAndConvert(imageUrl: string) {
   const response = await fetch(imageUrl)
@@ -35,7 +34,6 @@ async function loadImageAndConvert(imageUrl: string) {
 
 export async function detectImage(imageUrl: string) {
   console.log('detectImage', imageUrl)
-  await loadModel()
   const imageData = await loadImageAndConvert(imageUrl)
   console.log('imageData', imageData)
   // 使用 nsfwjs 进行分类

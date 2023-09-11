@@ -1,7 +1,7 @@
 import Koa from 'koa'
 import Router from 'koa-router'
 import bodyParser from 'koa-bodyparser'
-import { detectImage } from './src/nsfw'
+import { detectImage, loadModel } from './src/nsfw'
 
 const app = new Koa()
 const router = new Router()
@@ -23,6 +23,11 @@ router.get('/api/v1/nsfw-check', async (ctx) => {
 app.use(bodyParser())
 app.use(router.routes())
 app.use(router.allowedMethods())
-app.listen(3008, () => {
-  console.log('3008 is listening')
+
+loadModel().then(() => {
+  console.log('model loaded successfully')
+
+  app.listen(3008, () => {
+    console.log('3008 is listening')
+  })
 })
