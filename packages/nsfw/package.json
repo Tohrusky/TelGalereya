@@ -13,7 +13,7 @@
     "dev": "nodemon index.ts"
   },
   "dependencies": {
-    "canvas": "^2.11.2",
+    "@napi-rs/canvas": "^0.1.44",
     "@tensorflow/tfjs": "^4.10.0",
     "koa": "^2.14.2",
     "koa-body": "^6.0.1",

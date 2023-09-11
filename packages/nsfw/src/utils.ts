@@ -1,6 +1,6 @@
 import * as tf from '@tensorflow/tfjs'
 import crypto from 'crypto'
-import { createCanvas, Image } from 'canvas'
+import { createCanvas, Image } from '@napi-rs/canvas'
 import { IMAGE_RESIZE_WIDTH } from '../config'
 
 // 将 tf.Tensor3D 张量 转换为普通的 JavaScript 数组，并计算哈希值
@@ -30,7 +30,9 @@ export async function loadImageAndConvert(imageUrl: string) {
     ctx.drawImage(img, 0, 0, img.width, img.height)
     loaded = true
   }
-  img.src = imageUrl
+
+  const imgArrayBuffer = await (await fetch(imageUrl)).arrayBuffer()
+  img.src = Buffer.from(imgArrayBuffer)
 
   // 等待图片绘制
   while (!loaded) {
