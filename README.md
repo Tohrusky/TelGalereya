@@ -86,7 +86,19 @@ message NSFWScore {
 #### Example Response (Success):
 
 ```json
-
+{
+    "status": "success",
+    "message": "NSFW content: Sexy",
+    "url": "https://telegra.ph/file/1145141919810.png",
+    "nsfw": true,
+    "score": {
+        "drawing": 0.00007909037958597764,
+        "hentai": 0.0010020226472988725,
+        "neutral": 0.21883316338062286,
+        "sexy": 0.003355648135766387,
+        "porn": 0.7767300605773926
+    }
+}
 ```
 
 ## License
