@@ -7,7 +7,7 @@ import { handleNSFWCheck } from './services/nsfw.ts'
 const router = Router()
 
 router
-  .get('/', () => new Response('A Cloudflare Worker for Telegraph image hosting.', { status: 200 }))
+  .get('/', () => new Response('A Cloudflare Worker for Telegraph image hosting.'))
 
   .get('/image/:id', handleImage)
 
