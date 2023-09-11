@@ -13,6 +13,7 @@
   "scripts": {
     "dev": "nodemon index.ts",
     "build": "prisma generate && tsc",
+    "vercel-build": "prisma generate",
     "serve": "pnpm build && node dist/index.js",
     "generate": "prisma generate && prisma migrate dev --name init && prisma migrate deploy",
     "syncdb": "pnpm run generate"
