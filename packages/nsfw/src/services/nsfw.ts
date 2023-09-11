@@ -33,6 +33,7 @@ export async function handleNSFW(ctx: Koa.Context) {
   const res: NSFWResponseType = {
     status: 'success',
     message: resMsg,
+    url: url as string,
     nsfw: nsfw,
     score: Score
   }

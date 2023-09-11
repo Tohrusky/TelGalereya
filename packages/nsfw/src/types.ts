@@ -1,6 +1,7 @@
 export interface NSFWResponseType {
   status: string
   message: string
+  url: string
   nsfw: boolean
   score: NSFWScoreType
 }

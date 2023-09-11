@@ -49,6 +49,46 @@ message ImageResponse {
 }
 ```
 
+### `/nsfw-check` - Check if an Image is NSFW
+
+#### Request
+
+- Method: GET
+- Query Parameters:
+  - `url` (string) - The image URL to check.
+
+#### Response
+
+The response is in protobuf3 format and has the following structure:
+
+```protobuf
+message NSFWCheckResponse {
+    string status = 1;
+    string message = 2;
+    string url = 3;
+    bool nsfw = 4;
+    NSFWScore score = 5;
+}
+
+message NSFWScore {
+    double drawing = 1;
+    double hentai = 2;
+    double neutral = 3;
+    double sexy = 4;
+    double porn = 5;
+}
+```
+
+- `status` (string): The status of the check operation. Possible values are "success" or "error".
+- `message` (string): A message providing information about the check operation.
+- `nsfw` (bool): Whether the image is NSFW. When the value is `true`, the image is NSFW.
+
+#### Example Response (Success):
+
+```json
+
+```
+
 ## License
 
 This project is licensed under the BSD 3-Clause - see the LICENSE file for details.

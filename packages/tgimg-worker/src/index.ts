@@ -1,6 +1,7 @@
 import { error, json, Router } from 'itty-router'
 import { handleImage } from './services/image.ts'
 import { handleUpload } from './services/upload.ts'
+import { handleNSFWCheck } from './services/nsfw.ts'
 
 // create a new Router
 const router = Router()
@@ -9,6 +10,8 @@ router
   .get('/', () => new Response('A Cloudflare Worker for Telegraph image hosting.'))
 
   .get('/image/:id', handleImage)
+
+  .get('/api/v1/nsfw-check', handleNSFWCheck)
 
   .post('/api/v1/upload', handleUpload)
 
