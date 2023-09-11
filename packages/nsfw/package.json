@@ -10,7 +10,7 @@
   "repository": "https://github.com/Tohrusky/tgimg-worker",
   "homepage": "https://github.com/Tohrusky/tgimg-worker",
   "scripts": {
-    "dev": "nodemon ./src/index.ts"
+    "dev": "nodemon index.ts"
   },
   "dependencies": {
     "koa": "^2.14.2",
