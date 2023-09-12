@@ -1,8 +1,8 @@
 import { load, NSFWJS } from '../lib/nsfwjs'
 import { tensorToHash, loadImageAndConvert, resizeImageTensor } from './tensor'
 import { addRating, getRating } from '../dao/rating'
-import { IMAGE_RESIZE_WIDTH, OCR_SENSITIVE } from '../../config'
-import { OCRRecognize } from './sensitive'
+import { IMAGE_RESIZE_WIDTH } from '../../config'
+import { sensitiveWordRecognize } from './sensitive'
 
 let model: NSFWJS
 export async function loadModel() {
@@ -16,15 +16,8 @@ export async function detectImage(imageUrl: string): Promise<[Record<string, num
   console.log('Image:', imageUrl)
   const OriginTensor = await loadImageAndConvert(imageUrl)
 
-  // 检测出的敏感文字，如果没有敏感文字，就是 null
-  let sensitiveText = 'null'
-  if (OCR_SENSITIVE) {
-    // OCR 识别原图，返回文字
-    let ocrText = await OCRRecognize(OriginTensor)
-
-    console.log('OCR Text: ', ocrText)
-    sensitiveText = ocrText
-  }
+  // 识别图片中的敏感词
+  let sensitiveText = await sensitiveWordRecognize(OriginTensor)
 
   const imageTensor = await resizeImageTensor(OriginTensor, IMAGE_RESIZE_WIDTH)
   console.log('ImageTensor: ', imageTensor)
@@ -41,10 +34,9 @@ export async function detectImage(imageUrl: string): Promise<[Record<string, num
   }
 
   // 使用 nsfwjs 进行分类并计算推理时间
-  const startTime = Date.now()
+  const time = Date.now()
   const predictions = await model.classify(imageTensor)
-  const endTime = Date.now()
-  console.log(`Inference: ${endTime - startTime} ms`)
+  console.log('Inference: ', Date.now() - time, 'ms')
   // 将预测结果转换为一个对象
   const rating: Record<string, number> = {}
   predictions.forEach((predictions) => {

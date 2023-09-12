@@ -1,7 +1,9 @@
 import Tesseract from 'tesseract.js'
+import Mint from 'mint-filter'
+import Chinese from 'chinese-s2t'
 import { createCanvas, ImageData } from '@napi-rs/canvas'
 import * as tf from '@tensorflow/tfjs'
-import { OCR_API_KEY } from '../../config'
+import { OCR_API_KEY, OCR_SENSITIVE, SENSITIVE_WORDS } from '../../config'
 
 async function TensorToImageBuffer(imageTensor: tf.Tensor3D): Promise<Buffer> {
   // 获取图片张量的宽高
@@ -38,20 +40,56 @@ async function TensorToImageBuffer(imageTensor: tf.Tensor3D): Promise<Buffer> {
 
 // OCR图片中的文字
 export async function OCRRecognize(imageTensor: tf.Tensor3D): Promise<string> {
-  const time = Date.now()
   const imageBuffer = await TensorToImageBuffer(imageTensor)
-  console.log(`TensorToImageBuffer: ${Date.now() - time} ms`)
   if (OCR_API_KEY === '') {
     console.log('OCR_API_KEY is empty, Try use Tesseract.js OCR.')
     // 识别图片中的文字
     const {
       data: { text }
-    } = await Tesseract.recognize(imageBuffer, 'chi_sim')
-    console.log('OCR Time: ', Date.now() - time)
+    } = await Tesseract.recognize(imageBuffer, 'chi_sim+chi_tra')
     return text
   } else {
     console.log('OCR online')
 
     return ''
   }
+}
+
+// ----------------------------------------------- 特色识别 -----------------------------------------------
+// 敏感词过滤
+let sensitiveWordFilter: Mint
+export async function initMintFilter() {
+  const time = Date.now()
+  // 从网络上获取敏感词库txt文件，每行一个敏感词，使用 \n 分割
+  const response = await fetch(SENSITIVE_WORDS)
+  const text = await response.text()
+  // 创建 Mint 实例
+  sensitiveWordFilter = new Mint(text.split('\n'))
+  console.log('initMintFilter: ', Date.now() - time, 'ms')
+}
+
+// 识别张量图片中的敏感词，如果没有敏感词，就返回 null
+export async function sensitiveWordRecognize(imageTensor: tf.Tensor3D) {
+  const time = Date.now()
+
+  let sensitiveText = 'null'
+  if (OCR_SENSITIVE) {
+    // OCR 识别原图，返回文字
+    sensitiveText = await OCRRecognize(imageTensor)
+  }
+  console.log('OCR: ', Date.now() - time, 'ms')
+  // 预处理文字，统一转换为简体中文
+  sensitiveText = sensitiveText.replace(
+    /[|\s&%$@*\\/！!#^~_—+=｜﹨'"“；;.。，,、…?？<>《》()（）【】「」：:]+/g,
+    ''
+  )
+  sensitiveText = Chinese.t2s(sensitiveText)
+  // 过滤敏感词
+  const status = sensitiveWordFilter.filter(sensitiveText, { replace: false })
+  console.log('Sensitive: ', Date.now() - time, 'ms')
+  if (status.words.length === 0) {
+    return 'null'
+  }
+  // 敏感词数组转字符串，使用 | 分割
+  return status.words.toString().replace(/,/g, ' | ')
 }

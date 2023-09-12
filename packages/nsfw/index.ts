@@ -4,6 +4,7 @@ import bodyParser from 'koa-bodyparser'
 import { loadModel } from './src/inference/nsfw'
 import { handleNSFW } from './src/services/nsfw'
 import { inject } from '@vercel/analytics'
+import { initMintFilter } from './src/inference/sensitive'
 
 inject()
 
@@ -21,8 +22,10 @@ app.use(bodyParser())
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-loadModel().then(() => {
+loadModel().then(async () => {
   console.log('model loaded successfully')
+
+  await initMintFilter()
 
   app.listen(3008, () => {
     console.log('3008 is listening')

@@ -23,6 +23,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^6.7.0
         version: 6.7.0(eslint@8.49.0)(typescript@5.2.2)
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.3.1
       eslint:
         specifier: ^8.49.0
         version: 8.49.0
@@ -75,6 +78,9 @@ importers:
       '@vercel/analytics':
         specifier: ^1.0.2
         version: 1.0.2
+      chinese-s2t:
+        specifier: ^1.0.0
+        version: 1.0.0
       koa:
         specifier: ^2.14.2
         version: 2.14.2
@@ -87,6 +93,9 @@ importers:
       koa-router:
         specifier: ^12.0.0
         version: 12.0.0
+      mint-filter:
+        specifier: ^4.0.3
+        version: 4.0.3
       tesseract.js:
         specifier: ^4.1.2
         version: 4.1.2
@@ -1340,6 +1349,10 @@ packages:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
+  /chinese-s2t@1.0.0:
+    resolution: {integrity: sha512-7OozF1W+rFJpGldX5Xl2c0XuZg7NKYK5tUe0g9UQEJ6WZg6kJpBwEGgOyCVRMf6HOQ5UDdudIYFRcqeQadAxSA==}
+    dev: false
+
   /chokidar@3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
@@ -1556,6 +1569,11 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       esutils: 2.0.3
+    dev: true
+
+  /dotenv@16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
+    engines: {node: '>=12'}
     dev: true
 
   /edge-runtime@2.5.0:
@@ -2592,6 +2610,10 @@ packages:
   /minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
     dev: true
+
+  /mint-filter@4.0.3:
+    resolution: {integrity: sha512-CKh2zKv9oFHEmYCXFk5REG2480FBNYixK+hw0mlRd/TgDJVhPpRhHPNhWa3Q6zF1tpE2q7w7y+Ylu1YJusXDpA==}
+    dev: false
 
   /mkdirp-classic@0.5.3:
     resolution: {integrity: sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A==}
