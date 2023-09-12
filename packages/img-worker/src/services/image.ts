@@ -9,9 +9,7 @@ export async function handleImage(request: IRequest, env: Env) {
   const url = tgBaseUrl + '/file/' + Base64.decode(params.id)
 
   const useDetector =
-    env.NSFW_DETECTOR === 'FALSE' || env.NSFW_DETECTOR === 'False' || env.NSFW_DETECTOR === 'false'
-      ? false
-      : Boolean(env.NSFW_DETECTOR)
+    env.NSFW_DETECTOR.toLowerCase() === 'false' ? false : Boolean(env.NSFW_DETECTOR)
 
   if (!useDetector) {
     return await fetch(url)
