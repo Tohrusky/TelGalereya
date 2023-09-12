@@ -12,7 +12,7 @@ export async function loadModel() {
   }
 }
 
-export async function detectImage(imageUrl: string) {
+export async function detectImage(imageUrl: string): Promise<[Record<string, number>, string]> {
   console.log('Image:', imageUrl)
   const OriginTensor = await loadImageAndConvert(imageUrl)
 
