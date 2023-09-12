@@ -7,7 +7,19 @@ export async function handleNSFW(ctx: Koa.Context) {
   const { url } = ctx.query
   ctx.type = 'application/json'
 
-  const s = await detectImage(url as string)
+  let s: any
+  try {
+    s = await detectImage(url as string)
+  } catch (err) {
+    const res: NSFWResponseType = {
+      status: 'error',
+      message: String(err),
+      url: url as string
+    }
+
+    ctx.body = JSON.stringify(res)
+    return
+  }
 
   const Score: NSFWScoreType = {
     drawing: s['Drawing'],
