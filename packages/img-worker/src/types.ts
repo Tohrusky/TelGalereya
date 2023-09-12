@@ -1,3 +1,9 @@
+export interface Env {
+  NSFW_DETECTOR: string
+  NSFW_API_URL: string
+  NSFW_DEFAULT_IMAGE: string
+}
+
 export type ImageRespenseType = {
   src?: string
   error?: string
