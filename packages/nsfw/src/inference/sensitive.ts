@@ -59,10 +59,12 @@ export async function OCRRecognize(imageTensor: tf.Tensor3D): Promise<string> {
 // 敏感词过滤
 let sensitiveWordFilter: Mint
 export async function initMintFilter() {
-  const time = Date.now()
+  let time = Date.now()
   // 从网络上获取敏感词库txt文件，每行一个敏感词，使用 \n 分割
   const response = await fetch(SENSITIVE_WORDS)
   const text = await response.text()
+  console.log('loadSensitiveWords: ', Date.now() - time, 'ms')
+  time = Date.now()
   // 创建 Mint 实例
   sensitiveWordFilter = new Mint(text.split('\n'))
   console.log('initMintFilter: ', Date.now() - time, 'ms')
