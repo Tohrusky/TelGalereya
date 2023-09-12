@@ -2,3 +2,8 @@ main = "./src/index.ts"
 name = "img-worker"
 node_compat = true
 compatibility_date = "2023-09-04"
+
+[vars]
+CF_NSFW_DETECTOR = "True"
+CF_NSFW_API_URL = "https://img-worker-nsfw.vercel.app"
+CF_NSFW_DEFAULT_IMAGE = ""

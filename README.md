@@ -5,7 +5,7 @@ It uses Telegraph's file API and provides a simple Reverse Proxy for it.
 To use `img-worker`, deploy it to Cloudflare Workers using the provided deployment button.
 Then use `Custom Domains` to bind your own domain name.
 
-In [config](packages/img-worker/config.ts), you can enable the NSFW Detector. See [@img-worker/nsfw](./packages/nsfw/README.md) for more details.
+By Set Enviroment Variables in [config](packages/img-worker/config.ts), you can enable the NSFW Detector. See [@img-worker/nsfw](./packages/nsfw/README.md) for more details.
 
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Tohrusky/img-worker)
 
