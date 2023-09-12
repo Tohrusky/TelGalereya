@@ -5,11 +5,10 @@ const prisma = new PrismaClient()
 // 写入图片的敏感信息
 export async function addSensitive(hash: string, sensitive: string): Promise<void> {
   if (sensitive === 'null') {
-    console.log('Sensitive is null')
     return
   }
   try {
-    prisma.sensitive.create({
+    await prisma.sensitive.create({
       data: {
         hash: hash,
         sensitive: sensitive
