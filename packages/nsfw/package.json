@@ -11,7 +11,7 @@
   "repository": "https://github.com/Tohrusky/img-worker",
   "homepage": "https://github.com/Tohrusky/img-worker",
   "scripts": {
-    "dev": "prisma generate && nodemon index.ts",
+    "dev": "nodemon index.ts",
     "build": "prisma generate && tsc",
     "serve": "pnpm build && node dist/index.js",
     "syncdb": "prisma generate && prisma migrate dev --name init && prisma migrate deploy",
