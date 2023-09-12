@@ -70,13 +70,15 @@ export async function initMintFilter() {
 
 // 识别张量图片中的敏感词，如果没有敏感词，就返回 null
 export async function sensitiveWordRecognize(imageTensor: tf.Tensor3D) {
-  const time = Date.now()
-
   let sensitiveText = 'null'
-  if (OCR_SENSITIVE) {
-    // OCR 识别原图，返回文字
-    sensitiveText = await OCRRecognize(imageTensor)
+  if (!OCR_SENSITIVE) {
+    return sensitiveText
   }
+
+  const time = Date.now()
+  // OCR 识别原图，返回文字
+  sensitiveText = await OCRRecognize(imageTensor)
+
   console.log('OCR: ', Date.now() - time, 'ms')
   // 预处理文字，统一转换为简体中文
   sensitiveText = sensitiveText.replace(
