@@ -42,7 +42,7 @@ export async function OCRRecognize(imageTensor: tf.Tensor3D): Promise<string> {
   const imageBuffer = await TensorToImageBuffer(imageTensor)
   console.log(`TensorToImageBuffer: ${Date.now() - time} ms`)
   if (OCR_API_KEY === '') {
-    console.log('OCR_API_KEY is empty, Try use Tesseract.js OCR')
+    console.log('OCR_API_KEY is empty, Try use Tesseract.js OCR.')
     // 识别图片中的文字
     const {
       data: { text }
