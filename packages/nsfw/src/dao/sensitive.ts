@@ -4,9 +4,6 @@ const prisma = new PrismaClient()
 
 // 写入图片的敏感信息
 export async function addSensitive(hash: string, sensitive: string): Promise<void> {
-  if (sensitive === 'null') {
-    return
-  }
   try {
     await prisma.sensitive.create({
       data: {
@@ -20,16 +17,16 @@ export async function addSensitive(hash: string, sensitive: string): Promise<voi
 }
 
 // 获取图片的敏感信息
-export async function getSensitive(hash: string): Promise<string> {
+export async function getSensitive(hash: string): Promise<string | null> {
   try {
     const r = await prisma.sensitive.findUnique({
       where: {
         hash: hash
       }
     })
-    return r ? r.sensitive : 'null'
+    return r ? r.sensitive : null
   } catch (e) {
     console.log(e)
-    return 'null'
+    return null
   }
 }

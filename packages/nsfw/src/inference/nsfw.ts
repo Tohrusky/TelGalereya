@@ -2,7 +2,7 @@ import { load, NSFWJS } from '../lib/nsfwjs'
 import { tensorToHash, loadImageAndConvert, resizeImageTensor } from './tensor'
 import { addRating, getRating } from '../dao/rating'
 import { addSensitive, getSensitive } from '../dao/sensitive'
-import { IMAGE_RESIZE_WIDTH } from '../../config'
+import { IMAGE_RESIZE_WIDTH, OCR_SENSITIVE } from '../../config'
 import { sensitiveWordRecognize } from './sensitive'
 
 let model: NSFWJS
@@ -26,16 +26,17 @@ export async function detectImage(imageUrl: string): Promise<[Record<string, num
   // 分类结果
 
   let rating: Record<string, number> = {}
-  let sensitiveText: string
+  let sensitiveText: string = 'null'
 
   // 识别图片中的敏感词
 
   const historySensitiveText = await getSensitive(imageHash)
-  if (historySensitiveText !== 'null') {
+  if (historySensitiveText !== null) {
     // 如果图像已经被识别过，就直接返回之前的识别结果
     console.log('Image already checked, SensitiveText: ', historySensitiveText)
     sensitiveText = historySensitiveText
-  } else {
+  } else if (OCR_SENSITIVE) {
+    // 如果开启了 OCR 敏感词识别，就进行识别
     // 识别图片中的敏感词
     sensitiveText = await sensitiveWordRecognize(OriginTensor)
 

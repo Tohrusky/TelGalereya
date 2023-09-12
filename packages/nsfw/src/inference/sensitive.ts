@@ -3,7 +3,7 @@ import Mint from 'mint-filter'
 import Chinese from 'chinese-s2t'
 import { createCanvas, ImageData } from '@napi-rs/canvas'
 import * as tf from '@tensorflow/tfjs'
-import { OCR_API_KEY, OCR_SENSITIVE, SENSITIVE_WORDS } from '../../config'
+import { OCR_API_KEY, SENSITIVE_WORDS } from '../../config'
 
 async function TensorToImageBuffer(imageTensor: tf.Tensor3D): Promise<Buffer> {
   // 获取图片张量的宽高
@@ -70,10 +70,7 @@ export async function initMintFilter() {
 
 // 识别张量图片中的敏感词，如果没有敏感词，就返回 null
 export async function sensitiveWordRecognize(imageTensor: tf.Tensor3D) {
-  let sensitiveText = 'null'
-  if (!OCR_SENSITIVE) {
-    return sensitiveText
-  }
+  let sensitiveText: string
 
   const time = Date.now()
   // OCR 识别原图，返回文字
