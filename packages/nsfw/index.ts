@@ -31,3 +31,5 @@ loadModel().then(async () => {
     console.log('3008 is listening')
   })
 })
+
+export default app
