@@ -18,6 +18,7 @@
     "postinstall": "npm install -g prisma && prisma generate"
   },
   "dependencies": {
+    "tesseract.js": "^4.1.2",
     "@napi-rs/canvas": "^0.1.44",
     "@tensorflow/tfjs": "^4.10.0",
     "koa": "^2.14.2",

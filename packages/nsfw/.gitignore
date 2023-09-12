@@ -1,3 +1,5 @@
 .vercel
 .env
 prisma/migrations
+/chi_sim.traineddata
+/eng.traineddata
