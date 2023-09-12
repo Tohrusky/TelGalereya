@@ -35,9 +35,9 @@ export async function detectImage(imageUrl: string): Promise<[Record<string, num
   const historyRating = await getRating(imageHash)
   if (historyRating !== null) {
     // 如果图像已经被分类过，就直接返回之前的分类结果
-    const rating = JSON.parse(historyRating.rating)
+    const rating: Record<string, number> = JSON.parse(historyRating.rating)
     console.log('Image already classified, Rating: ', rating)
-    return rating
+    return [rating, sensitiveText]
   }
 
   // 使用 nsfwjs 进行分类并计算推理时间
