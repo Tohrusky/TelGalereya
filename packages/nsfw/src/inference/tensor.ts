@@ -1,7 +1,6 @@
 import * as tf from '@tensorflow/tfjs'
 import crypto from 'crypto'
 import { createCanvas, Image } from '@napi-rs/canvas'
-import { IMAGE_RESIZE_WIDTH } from '../../config'
 
 // 将 tf.Tensor3D 张量 转换为普通的 JavaScript 数组，并计算哈希值
 export function tensorToHash(tensor: tf.Tensor3D): string {
@@ -41,13 +40,19 @@ export async function loadImageAndConvert(imageUrl: string) {
   // 将画布中的图像转换为 TensorFlow 张量
   const tensorFromCanvas = tf.browser.fromPixels(canvas)
   console.log('OriginImageTensor: ', tensorFromCanvas)
-  // 进行图像缩放
-  const newWidth = IMAGE_RESIZE_WIDTH
+  return tensorFromCanvas
+}
+
+// 缩小图片尺寸
+export async function resizeImageTensor(
+  imageTensor: tf.Tensor3D,
+  newWidth: number
+): Promise<tf.Tensor3D> {
   if (Number(newWidth) === -1) {
-    return tensorFromCanvas
+    return imageTensor
   }
 
-  const newHeight = Math.ceil((tensorFromCanvas.shape[0] * newWidth) / tensorFromCanvas.shape[1])
+  const newHeight = Math.ceil((imageTensor.shape[0] * newWidth) / imageTensor.shape[1])
 
-  return tf.image.resizeBilinear(tensorFromCanvas, [newHeight, newWidth]).toInt()
+  return tf.image.resizeBilinear(imageTensor, [newHeight, newWidth]).toInt()
 }

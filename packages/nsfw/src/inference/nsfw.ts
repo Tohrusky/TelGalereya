@@ -1,6 +1,8 @@
 import { load, NSFWJS } from '../lib/nsfwjs'
-import { tensorToHash, loadImageAndConvert } from './tensor'
+import { tensorToHash, loadImageAndConvert, resizeImageTensor } from './tensor'
 import { addRating, getRating } from '../dao/rating'
+import { IMAGE_RESIZE_WIDTH, OCR_SENSITIVE } from '../../config'
+import { OCRRecognize } from './sensitive'
 
 let model: NSFWJS
 export async function loadModel() {
@@ -12,7 +14,19 @@ export async function loadModel() {
 
 export async function detectImage(imageUrl: string) {
   console.log('Image:', imageUrl)
-  const imageTensor = await loadImageAndConvert(imageUrl)
+  const OriginTensor = await loadImageAndConvert(imageUrl)
+
+  // 检测出的敏感文字，如果没有敏感文字，就是 null
+  let sensitiveText = 'null'
+  if (OCR_SENSITIVE) {
+    // OCR 识别原图，返回文字
+    let ocrText = await OCRRecognize(OriginTensor)
+
+    console.log('OCR Text: ', ocrText)
+    sensitiveText = ocrText
+  }
+
+  const imageTensor = await resizeImageTensor(OriginTensor, IMAGE_RESIZE_WIDTH)
   console.log('ImageTensor: ', imageTensor)
   // 计算图像的哈希值
   const imageHash = tensorToHash(imageTensor)
@@ -41,5 +55,5 @@ export async function detectImage(imageUrl: string) {
   // 将分类结果存储数据库
   await addRating(imageHash, JSON.stringify(rating))
 
-  return rating
+  return [rating, sensitiveText]
 }

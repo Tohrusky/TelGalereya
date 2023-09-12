@@ -71,6 +71,7 @@ message NSFWCheckResponse {
     string status = 1;
     string message = 2;
     string url = 3;
+    string sensitive = 4;
     bool nsfw = 4;
     NSFWScore score = 5;
 }
@@ -95,6 +96,7 @@ message NSFWScore {
   "status": "success",
   "message": "NSFW content: Sexy",
   "url": "https://telegra.ph/file/1145141919810.png",
+  "sensitive": "null",
   "nsfw": true,
   "score": {
     "drawing": 0.00007909037958597764,

@@ -20,7 +20,7 @@ export async function handleImage(request: IRequest) {
     const res: NSFWResponseType = await response.json()
     console.log(res)
     if (res?.status === 'success') {
-      if (res.nsfw) {
+      if (res.nsfw || res.sensitive != 'null') {
         return await fetch(NSFW_DEFAULT_IMAGE)
       } else {
         return await fetch(url)

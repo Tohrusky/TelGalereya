@@ -7,9 +7,12 @@ export async function handleNSFW(ctx: Koa.Context) {
   const { url } = ctx.query
   ctx.type = 'application/json'
 
-  let s: any
+  let s: any // 评分
+  let w: string // 敏感文字
   try {
-    s = await detectImage(url as string)
+    const d = await detectImage(url as string)
+    s = d[0]
+    w = d[1]
   } catch (err) {
     const res: NSFWResponseType = {
       status: 'error',
@@ -46,6 +49,7 @@ export async function handleNSFW(ctx: Koa.Context) {
     status: 'success',
     message: resMsg,
     url: url as string,
+    sensitive: w,
     nsfw: nsfw,
     score: Score
   }
