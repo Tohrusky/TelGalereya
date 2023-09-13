@@ -5,5 +5,5 @@ compatibility_date = "2023-09-04"
 
 [vars]
 NSFW_DETECTOR = "True"
-NSFW_API_URL = "https://img-worker-nsfw.vercel.app"
+NSFW_API_URL = "https://img-worker-nsfw.vercel.app;https://nsfw.tohru.top"
 NSFW_DEFAULT_IMAGE = "https://telegra.ph/file/fb57cac5517050c4726d2.jpg"
