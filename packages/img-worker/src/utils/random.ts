@@ -1,7 +1,12 @@
-export function shuffleArray(arr: Array<any>) {
-  let i = arr.length
-  while (--i) {
-    let j = Math.floor(Math.random() * i)
-    ;[arr[j], arr[i]] = [arr[i], arr[j]]
+export function shuffleArray(array: Array<any>) {
+  let currentIndex = array.length
+  let randomIndex
+  // While there remain elements to shuffle.
+  while (currentIndex > 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex)
+    currentIndex--
+    // And swap it with the current element.
+    ;[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]]
   }
 }
