@@ -1,30 +1,28 @@
 import { IRequest } from 'itty-router/Router'
 import { Base64 } from 'js-base64'
 import { NSFWResponseType } from '@img-worker/nsfw/src/types.ts'
-import { Env } from '../types.ts'
 
-export async function handleImage(request: IRequest, env: Env) {
+export async function handleImage(request: IRequest) {
   const { params } = request
   const tgBaseUrl = 'https://telegra.ph'
   const url = tgBaseUrl + '/file/' + Base64.decode(params.id)
 
-  const useDetector =
-    env.NSFW_DETECTOR.toLowerCase() === 'false' ? false : Boolean(env.NSFW_DETECTOR)
-
-  if (!useDetector) {
+  if (!request.NSFW_DETECTOR) {
     return await fetch(url)
   }
 
-  await fetch(env.NSFW_API_URL) // 预热 API 服务
+  await fetch(request.NSFW_API_URL) // 预热 API 服务
 
   try {
-    const response = await fetch(env.NSFW_API_URL + '/api/v1/nsfw-check/?url=' + url)
+    const response = await fetch(request.NSFW_API_URL + '/api/v1/nsfw-check/?url=' + url)
 
     const res: NSFWResponseType = await response.json()
     console.log(res)
     if (res?.status === 'success') {
-      if (res.nsfw || res.sensitive != 'null') {
-        return await fetch(env.NSFW_DEFAULT_IMAGE)
+      // 查询成功，如果是 NSFW 图片，或敏感词长度大于 2，返回默认图片
+      // @ts-ignore
+      if (res.nsfw || (res.sensitive != 'null' && res.sensitive.length > 2)) {
+        return await fetch(request.NSFW_DEFAULT_IMAGE)
       } else {
         return await fetch(url)
       }

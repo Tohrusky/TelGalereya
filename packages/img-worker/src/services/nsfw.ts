@@ -1,10 +1,22 @@
 import { IRequest } from 'itty-router/Router'
-import { Env } from '../types.ts'
+import { GetErrorResponse } from './response.ts'
 
-export async function handleNSFWCheck(request: IRequest, env: Env) {
+export async function handleNSFWCheck(request: IRequest) {
   const { url } = request.query
 
-  await fetch(env.NSFW_API_URL) // 预热 API 服务
+  if (!request.NSFW_DETECTOR) {
+    return new Response(
+      JSON.stringify(GetErrorResponse('NSFW detection is disabled or NSFW_API_URL is empty')),
+      {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    )
+  }
+
+  await fetch(request.NSFW_API_URL) // 预热 API 服务
 
   let rUrl = url as string
   const response = await fetch(rUrl)
@@ -14,8 +26,13 @@ export async function handleNSFWCheck(request: IRequest, env: Env) {
   }
 
   try {
-    return await fetch(env.NSFW_API_URL + '/api/v1/nsfw-check/?url=' + rUrl)
+    return await fetch(request.NSFW_API_URL + '/api/v1/nsfw-check/?url=' + rUrl)
   } catch (err) {
-    return new Response('Error: ' + err, { status: 500 })
+    return new Response(JSON.stringify(GetErrorResponse('Error: ' + err)), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
   }
 }

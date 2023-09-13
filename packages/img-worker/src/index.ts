@@ -2,11 +2,14 @@ import { error, json, Router } from 'itty-router'
 import { handleImage } from './services/image.ts'
 import { handleUpload } from './services/upload.ts'
 import { handleNSFWCheck } from './services/nsfw.ts'
+import { setCFEnv } from './middleware/cfenv.ts'
 
 // create a new Router
 const router = Router()
 
 router
+  .all('*', setCFEnv)
+
   .get('/', () => new Response('A Cloudflare Worker for Telegraph image hosting.'))
 
   .get('/image/:id', handleImage)
