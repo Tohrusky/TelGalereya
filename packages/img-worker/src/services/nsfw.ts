@@ -16,8 +16,6 @@ export async function handleNSFWCheck(request: IRequest) {
     )
   }
 
-  await fetch(request.NSFW_API_URL) // 预热 API 服务
-
   let rUrl = url as string
   const response = await fetch(rUrl)
   if (response.redirected) {
