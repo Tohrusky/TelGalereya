@@ -3,6 +3,9 @@ name = "img-worker"
 node_compat = true
 compatibility_date = "2023-09-04"
 
+[placement]
+mode = "smart"
+
 [vars]
 NSFW_DETECTOR = "True"
 NSFW_API_URL = "https://img-worker-nsfw.vercel.app;https://nsfw.tohru.top"
