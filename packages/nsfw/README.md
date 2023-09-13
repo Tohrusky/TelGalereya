@@ -13,3 +13,9 @@ Example: TiDB Serverless
 ```bash
 MYSQL_DATABASE_URL="mysql://xxxxxxxxxxxxx.root:effew4363636jjfdi66@gateway01.ap-northeast-1.prod.aws.tidbcloud.com:4000/NSFW_SERVERLESS?sslaccept=strict"
 ```
+
+### Docker
+
+```bash
+docker run -d --restart=always -p 80:3008 --name nsfw -e OCR_SENSITIVE="true" -e MYSQL_DATABASE_URL="mysql://xxxx" lychee0/nsfw
+```
