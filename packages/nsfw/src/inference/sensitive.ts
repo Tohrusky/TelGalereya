@@ -51,6 +51,8 @@ export async function OCRRecognize(imageTensor: tf.Tensor3D): Promise<string> {
   } else {
     console.log('OCR online')
 
+    console.log('Wait to be implemented, return empty string.')
+
     return ''
   }
 }
