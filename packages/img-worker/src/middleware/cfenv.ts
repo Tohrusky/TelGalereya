@@ -27,7 +27,7 @@ export async function setCFEnv(request: IRequest, env: Env) {
   }
 
   // 随机选择一个 API 服务地址预热，如果请求失败，就选择下一个，直到成功，失败次数超过总数则放弃
-  let NSFW_API_URL
+  let NSFW_API_URL = ''
   const time = Date.now()
   for (const url of nsfwApiUrls) {
     try {
@@ -39,6 +39,12 @@ export async function setCFEnv(request: IRequest, env: Env) {
     } catch (error) {
       console.error(error)
     }
+  }
+
+  if (NSFW_API_URL === '') {
+    console.error('All NSFW api servers down!!!')
+    request.NSFW_DETECTOR = false
+    return
   }
 
   console.log('NSFW_API_URL', NSFW_API_URL, 'Select cost', Date.now() - time, 'ms')

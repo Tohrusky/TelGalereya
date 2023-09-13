@@ -6,7 +6,9 @@ export async function handleNSFWCheck(request: IRequest) {
 
   if (!request.NSFW_DETECTOR) {
     return new Response(
-      JSON.stringify(GetErrorResponse('NSFW detection is disabled or NSFW_API_URL is empty')),
+      JSON.stringify(
+        GetErrorResponse('NSFW detection is disabled or NSFW_API_URL is unavailable.')
+      ),
       {
         status: 500,
         headers: {
