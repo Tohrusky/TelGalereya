@@ -16,6 +16,8 @@ MYSQL_DATABASE_URL="mysql://xxxxxxxxxxxxx.root:effew4363636jjfdi66@gateway01.ap-
 
 ### Docker
 
+Enable OCR if your machine is powerful enough.
+
 ```bash
 docker run -d --restart=always -p 80:3008 --name nsfw -e OCR_SENSITIVE="true" -e MYSQL_DATABASE_URL="mysql://xxxx" lychee0/nsfw
 ```
