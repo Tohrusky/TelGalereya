@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@babel/types':
-        specifier: ^7.22.17
-        version: 7.22.17
+        specifier: ^7.22.19
+        version: 7.22.19
       '@cloudflare/workers-types':
         specifier: ^4.20230904.0
         version: 4.20230904.0
@@ -118,9 +118,18 @@ importers:
       '@vercel/node':
         specifier: ^3.0.4
         version: 3.0.4
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.3.1
       nodemon:
         specifier: ^3.0.1
         version: 3.0.1
+      ts-node:
+        specifier: ^10.9.1
+        version: 10.9.1(@types/node@20.6.0)(typescript@5.2.2)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
 
 packages:
 
@@ -134,17 +143,17 @@ packages:
     engines: {node: '>=6.9.0'}
     dev: true
 
-  /@babel/helper-validator-identifier@7.22.15:
-    resolution: {integrity: sha512-4E/F9IIEi8WR94324mbDUMo074YTheJmd7eZF5vITTeYchqAi6sYXRLHUVsmkdmY4QjfKTcB2jB7dVP3NaBElQ==}
+  /@babel/helper-validator-identifier@7.22.19:
+    resolution: {integrity: sha512-Tinq7ybnEPFFXhlYOYFiSjespWQk0dq2dRNAiMdRTOYQzEGqnnNyrTxPYHP5r6wGjlF1rFgABdDV0g8EwD6Qbg==}
     engines: {node: '>=6.9.0'}
     dev: true
 
-  /@babel/types@7.22.17:
-    resolution: {integrity: sha512-YSQPHLFtQNE5xN9tHuZnzu8vPr61wVTBZdfv1meex1NBosa4iT05k/Jw06ddJugi4bk7The/oSwQGFcksmEJQg==}
+  /@babel/types@7.22.19:
+    resolution: {integrity: sha512-P7LAw/LbojPzkgp5oznjE6tQEIWbp4PkkfrZDINTro9zgBRtI324/EYsiSI7lhPbpIQ+DCeR2NNmMWANGGfZsg==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-string-parser': 7.22.5
-      '@babel/helper-validator-identifier': 7.22.15
+      '@babel/helper-validator-identifier': 7.22.19
       to-fast-properties: 2.0.0
     dev: true
 
