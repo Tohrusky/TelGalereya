@@ -12,4 +12,4 @@ export const SENSITIVE_WORDS =
   process.env.SENSITIVE_WORDS ||
   'https://raw.githubusercontent.com/Tohrusky/chinese-sensitive-go/main/dict/boss.txt' // sensitive words dictionary, load online
 
-export const TENSORFLOW_BACKEND = process.env.TENSORFLOW_BACKEND || 'cpu' // tensorflow backend
+export const TENSORFLOW_BACKEND = process.env.TENSORFLOW_BACKEND || 'wasm' // tensorflow backend

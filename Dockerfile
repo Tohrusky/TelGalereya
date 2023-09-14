@@ -13,7 +13,7 @@ ENV NSFW_VALUE 0.7
 ENV OCR_SENSITIVE false
 ENV OCR_API_KEY ""
 ENV SENSITIVE_WORDS "https://raw.githubusercontent.com/Tohrusky/chinese-sensitive-go/main/dict/boss.txt"
-ENV TENSORFLOW_BACKEND cpu
+ENV TENSORFLOW_BACKEND wasm
 
 EXPOSE 3008
 

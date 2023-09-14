@@ -1,8 +1,6 @@
 import * as tf from '@tensorflow/tfjs'
+import '@tensorflow/tfjs-backend-wasm'
 import { NSFW_CLASSES } from './nsfw_classes'
-import { TENSORFLOW_BACKEND } from '../../../config'
-
-tf.setBackend(TENSORFLOW_BACKEND).then(() => console.log('Tensorflow backend: ', tf.getBackend()))
 
 export type frameResult = {
   index: number

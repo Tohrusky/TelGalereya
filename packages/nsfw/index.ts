@@ -5,7 +5,8 @@ import { loadModel } from './src/inference/nsfw'
 import { handleNSFW } from './src/services/nsfw'
 import { inject } from '@vercel/analytics'
 import { initMintFilter } from './src/inference/sensitive'
-import { OCR_SENSITIVE } from './config'
+import { OCR_SENSITIVE, TENSORFLOW_BACKEND } from './config'
+import * as tf from '@tensorflow/tfjs'
 
 inject()
 
@@ -23,16 +24,21 @@ app.use(bodyParser())
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-loadModel().then(async () => {
-  console.log('model loaded successfully')
+tf.setBackend(TENSORFLOW_BACKEND).then(async () => {
+  await tf.ready()
+  console.log('Tensorflow backend: ', tf.getBackend())
 
-  // 预加载敏感词库
-  if (OCR_SENSITIVE) {
-    await initMintFilter()
-  }
+  loadModel().then(async () => {
+    console.log('model loaded successfully')
 
-  app.listen(3008, () => {
-    console.log('3008 is listening')
+    // 预加载敏感词库
+    if (OCR_SENSITIVE) {
+      await initMintFilter()
+    }
+
+    app.listen(3008, () => {
+      console.log('3008 is listening')
+    })
   })
 })
 
