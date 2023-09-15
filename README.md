@@ -1,13 +1,13 @@
-# img-worker
+# ТелГалерея
 
-`img-worker` is a Cloudflare Workers service for image hosting.
+`ТелГалерея` is a Cloudflare Workers service for image hosting.
 It uses Telegraph's file API and provides a simple Reverse Proxy for it.
-To use `img-worker`, deploy it to Cloudflare Workers using the provided deployment button.
+To use `ТелГалерея`, deploy it to Cloudflare Workers using the provided deployment button.
 Then use `Custom Domains` to bind your own domain name.
 
 By Set Enviroment Variables in [config](packages/img-worker/wrangler.toml), you can enable the NSFW Detector. See [@img-worker/nsfw](./packages/nsfw/README.md) for more details.
 
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Tohrusky/img-worker)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Tohrusky/TelGalereya)
 
 ## API Endpoint `/api/v1`
 
