@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -124,12 +124,6 @@ importers:
       nodemon:
         specifier: ^3.0.1
         version: 3.0.1
-      ts-node:
-        specifier: ^10.9.1
-        version: 10.9.1(@types/node@20.6.0)(typescript@5.2.2)
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
 
 packages:
 

@@ -13,13 +13,13 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy"
   },
-  "devDependencies": {
-    "miniflare": "^3.20230904.0",
-    "wrangler": "^3.7.0"
-  },
   "dependencies": {
     "@img-worker/nsfw": "workspace:^",
     "itty-router": "^4.0.22",
     "js-base64": "^3.7.5"
+  },
+  "devDependencies": {
+    "miniflare": "^3.20230904.0",
+    "wrangler": "^3.7.0"
   }
 }

@@ -27,7 +27,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./packages/nsfw
+          context: .
+          file: ./packages/nsfw/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/nsfw:latest
