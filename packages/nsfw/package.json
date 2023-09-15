@@ -29,7 +29,8 @@
     "@vercel/analytics": "^1.0.2",
     "@prisma/client": "^5.2.0",
     "mint-filter": "^4.0.3",
-    "chinese-s2t": "^1.0.0"
+    "chinese-s2t": "^1.0.0",
+    "dotenv": "^16.3.1"
   },
   "devDependencies": {
     "@types/koa": "^2.13.8",
@@ -39,7 +40,6 @@
     "@types/koa2-cors": "^2.0.2",
     "@types/koa-bodyparser": "^4.3.10",
     "ts-node": "^10.9.1",
-    "typescript": "^5.2.2",
-    "dotenv": "^16.3.1"
+    "typescript": "^5.2.2"
   }
 }
