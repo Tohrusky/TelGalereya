@@ -116,8 +116,8 @@ importers:
         specifier: ^7.4.4
         version: 7.4.4
       '@types/koa2-cors':
-        specifier: ^2.0.2
-        version: 2.0.2
+        specifier: ^2.0.3
+        version: 2.0.3
       '@vercel/node':
         specifier: ^3.0.4
         version: 3.0.4
@@ -910,8 +910,8 @@ packages:
       '@types/koa': 2.13.8
     dev: true
 
-  /@types/koa2-cors@2.0.2:
-    resolution: {integrity: sha512-S7D//zbF0oJJJ7l6eFT2ThXPCjxHOv84HKMKiZPmVu51Bf4GWZGbTZDedIoUo/aXEIwTnfKbSiod/vqidfDwjg==}
+  /@types/koa2-cors@2.0.3:
+    resolution: {integrity: sha512-FYsjEhrgEvvZJwzfKmEJJ+N+qLJ56iWMuvNM34CHrqJcLDhvYxd/bBwqEQ1UXy7muHEcFPS77nsqicFs/D0b/w==}
     dependencies:
       '@types/koa': 2.13.8
     dev: true
