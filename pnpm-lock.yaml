@@ -58,8 +58,8 @@ importers:
         version: 3.7.5
     devDependencies:
       miniflare:
-        specifier: ^3.20230904.0
-        version: 3.20230904.0
+        specifier: ^3.20230918.0
+        version: 3.20230918.0
       wrangler:
         specifier: ^3.7.0
         version: 3.7.0
@@ -2633,6 +2633,28 @@ packages:
       glob-to-regexp: 0.4.1
       http-cache-semantics: 4.1.1
       kleur: 4.1.5
+      source-map-support: 0.5.21
+      stoppable: 1.1.0
+      undici: 5.24.0
+      workerd: 1.20230904.0
+      ws: 8.14.1
+      youch: 3.3.1
+      zod: 3.22.2
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+    dev: true
+
+  /miniflare@3.20230918.0:
+    resolution: {integrity: sha512-Dd29HB7ZlT1CXB2tPH8nW6fBOOXi/m7qFZHjKm2jGS+1OaGfrv0PkT5UspWW5jQi8rWI87xtordAUiIJkwWqRw==}
+    engines: {node: '>=16.13'}
+    dependencies:
+      acorn: 8.10.0
+      acorn-walk: 8.2.0
+      capnp-ts: 0.7.0
+      exit-hook: 2.2.1
+      glob-to-regexp: 0.4.1
       source-map-support: 0.5.21
       stoppable: 1.1.0
       undici: 5.24.0
