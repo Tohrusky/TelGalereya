@@ -103,8 +103,8 @@ importers:
         specifier: ^4.0.3
         version: 4.0.3
       tesseract.js:
-        specifier: ^4.1.2
-        version: 4.1.2
+        specifier: ^5.0.2
+        version: 5.0.2
     devDependencies:
       '@types/koa':
         specifier: ^2.13.8
@@ -3238,12 +3238,12 @@ packages:
       readable-stream: 3.6.2
     dev: true
 
-  /tesseract.js-core@4.0.4:
-    resolution: {integrity: sha512-MJ+vtktjAaT0681uPl6TDUPhbRbpD/S9emko5rtorgHRZpQo7R3BG7h+3pVHgn1KjfNf1bvnx4B7KxEK8YKqpg==}
+  /tesseract.js-core@5.0.0:
+    resolution: {integrity: sha512-lJur5LzjinW5VYMKlVNnBU2JPLpO+A9VqAYBeuV+ZgH0hKvsnm+536Yyp+/zRTBdLe7D6Kok0FN9g+TE4J8qGA==}
     dev: false
 
-  /tesseract.js@4.1.2:
-    resolution: {integrity: sha512-riCr/rbwt0siIf/HiC0W2J/6ndbEcRWVZvwTxeDRPgMwP4douBLYq7i4NgMigWAmJea7GA0r3XGLa2GknRYmPA==}
+  /tesseract.js@5.0.2:
+    resolution: {integrity: sha512-BbiaC3W7C23tjQfepPaXWiQFgEW9HFacpEFpZpuGsLfp1J7NPTLFj7II1Q2ukdPXNwh9z/KR0cikS2avpdEP0A==}
     requiresBuild: true
     dependencies:
       bmp-js: 0.1.0
@@ -3253,7 +3253,7 @@ packages:
       node-fetch: 2.6.13
       opencollective-postinstall: 2.0.3
       regenerator-runtime: 0.13.11
-      tesseract.js-core: 4.0.4
+      tesseract.js-core: 5.0.0
       wasm-feature-detect: 1.5.1
       zlibjs: 0.3.1
     transitivePeerDependencies:
