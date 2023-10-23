@@ -110,8 +110,8 @@ importers:
         specifier: ^2.13.8
         version: 2.13.8
       '@types/koa-bodyparser':
-        specifier: ^4.3.10
-        version: 4.3.10
+        specifier: ^4.3.11
+        version: 4.3.11
       '@types/koa-router':
         specifier: ^7.4.4
         version: 7.4.4
@@ -893,8 +893,8 @@ packages:
   /@types/keygrip@1.0.2:
     resolution: {integrity: sha512-GJhpTepz2udxGexqos8wgaBx4I/zWIDPh/KOGEwAqtuGDkOUJu5eFvwmdBX4AmB8Odsr+9pHCQqiAqDL/yKMKw==}
 
-  /@types/koa-bodyparser@4.3.10:
-    resolution: {integrity: sha512-6ae05pjhmrmGhUR8GYD5qr5p9LTEMEGfGXCsK8VaSL+totwigm8+H/7MHW7K4854CMeuwRAubT8qcc/EagaeIA==}
+  /@types/koa-bodyparser@4.3.11:
+    resolution: {integrity: sha512-ClE+n+3w7BtepmyvAuXBbYDz13lmihha27FF2iIpqymsY6j2VS2f/I9wieyN/sZBMcM/POU7LPlMi2m2iNV+Vg==}
     dependencies:
       '@types/koa': 2.13.8
     dev: true
