@@ -35,7 +35,7 @@
   "devDependencies": {
     "@types/koa": "^2.13.8",
     "nodemon": "^3.0.1",
-    "@vercel/node": "^3.0.4",
+    "@vercel/node": "^3.0.9",
     "@types/koa-router": "^7.4.4",
     "@types/koa2-cors": "^2.0.2",
     "@types/koa-bodyparser": "^4.3.10"
