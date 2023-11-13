@@ -38,6 +38,6 @@
     "@vercel/node": "^3.0.4",
     "@types/koa-router": "^7.4.4",
     "@types/koa2-cors": "^2.0.2",
-    "@types/koa-bodyparser": "^4.3.10"
+    "@types/koa-bodyparser": "^4.3.12"
   }
 }
