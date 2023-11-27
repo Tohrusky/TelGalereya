@@ -12,8 +12,8 @@ importers:
         specifier: ^7.22.19
         version: 7.22.19
       '@cloudflare/workers-types':
-        specifier: ^4.20230904.0
-        version: 4.20230904.0
+        specifier: ^4.20231121.0
+        version: 4.20231121.0
       '@rushstack/eslint-patch':
         specifier: ^1.4.0
         version: 1.4.0
@@ -202,8 +202,8 @@ packages:
     dev: true
     optional: true
 
-  /@cloudflare/workers-types@4.20230904.0:
-    resolution: {integrity: sha512-IX4oJCe14ctblSPZBlW64BVZ9nYLUo6sD2I5gu3hX0ywByYWm1OuoKm9Xb/Zpbj8Ph18Z7Ryii6u2/ocnncXdA==}
+  /@cloudflare/workers-types@4.20231121.0:
+    resolution: {integrity: sha512-+kWfpCkqiepwAKXyHoE0gnkPgkLhz0/9HOBIGhHRsUvUKvhUtm3mbqqoGRWgF1qcjzrDUBbrrOq4MYHfFtc2RA==}
     dev: true
 
   /@cspotcode/source-map-support@0.8.1:
