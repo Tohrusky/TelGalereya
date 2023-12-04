@@ -19,7 +19,7 @@
     "js-base64": "^3.7.5"
   },
   "devDependencies": {
-    "miniflare": "^3.20230904.0",
+    "miniflare": "^3.20231030.2",
     "wrangler": "^3.7.0"
   }
 }
